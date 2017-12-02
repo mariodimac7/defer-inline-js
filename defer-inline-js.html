@@ -1,0 +1,32 @@
+
+<!-- Put this function inline on the header -->
+<script>
+  function whenAvailable(name, callback) {
+    var interval = 10; // ms
+    window.setTimeout(function() {
+      if (window[name]) {
+        callback(window[name]);
+      } else {
+        window.setTimeout(arguments.callee, interval);
+      }
+    }, interval);
+  }
+  </script>
+
+
+<!-- Wrap your inline script into this function, and execute your stuff in the callback -->
+ <script>
+  whenAvailable('myFunction', function(t) {
+   
+    //
+    // Your code here
+    //
+    // When myFunction() will be available this code will be executed
+    //
+    
+  });
+  </script>
+
+
+<!--  load all your script with defer -->
+<script src="http://example.com/js/app.js" defer="defer" ></script>
